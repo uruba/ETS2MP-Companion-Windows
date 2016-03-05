@@ -43,5 +43,10 @@ namespace TruckersMPApp
             this._serverList = await ServerInfoFetcher.fetchServers();
             Bindings.Update();
         }
+
+        private void Refresh_Click(object sender, RoutedEventArgs e)
+        {
+            this.fetchServers();
+        }
     }
 }

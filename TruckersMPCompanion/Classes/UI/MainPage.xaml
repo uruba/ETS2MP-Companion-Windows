@@ -43,7 +43,7 @@
 
     <Page.BottomAppBar>
         <CommandBar>
-            <AppBarButton Name="Refresh" Icon="Refresh" Label="Refresh" />
+            <AppBarButton Name="Refresh" Icon="Refresh" Label="Refresh" Click="Refresh_Click" />
         </CommandBar>
     </Page.BottomAppBar>
 </Page>
