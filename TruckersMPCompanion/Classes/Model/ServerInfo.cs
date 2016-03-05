@@ -34,6 +34,22 @@ namespace TruckersMPApp.Classes.Model
             private set;
         }
 
+        public string playerCountString
+        {
+            get
+            {
+                return String.Format("{0} / {1} players", this.playerCountCurrent, this.playerCountCapacity);
+            }
+        }
+
+        public double playerCountRatio
+        {
+            get
+            {
+                return playerCountCapacity == 0 ? playerCountCapacity : playerCountCurrent / playerCountCapacity;
+            }
+        }
+
         public ServerInfo(Boolean online, String gameName, String serverName, double playerCountCurrent, double playerCountCapacity)
         {
             this.online = online;

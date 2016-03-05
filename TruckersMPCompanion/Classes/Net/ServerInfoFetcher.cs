@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Threading.Tasks;
 using TruckersMPApp.Classes.Constants;
 using TruckersMPApp.Classes.Model;
@@ -33,7 +34,7 @@ namespace TruckersMPApp
                 serverCollection.Add(serverInfoEntry);
             }
 
-            return serverCollection;
+            return new ObservableCollection<ServerInfo>(serverCollection.OrderByDescending(a => a.playerCountCurrent));
         }
     }
 }

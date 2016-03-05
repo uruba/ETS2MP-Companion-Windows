@@ -41,6 +41,7 @@ namespace TruckersMPApp
         private async void fetchServers()
         {
             this._serverList = await ServerInfoFetcher.fetchServers();
+            Bindings.Update();
         }
     }
 }
