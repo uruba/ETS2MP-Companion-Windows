@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:model="using:TruckersMPApp.Classes.Model"
+    xmlns:converter="using:TruckersMPApp.Classes.Converters"
     mc:Ignorable="d">
 
     <Page.Resources>
@@ -22,18 +23,24 @@
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0" Text="{x:Bind serverName}" Style="{StaticResource BaseTextBlockStyle}" />
-                    <TextBlock Grid.Column="1" Text="{x:Bind online}" Style="{StaticResource BaseTextBlockStyle}" />
+                    <TextBlock Grid.Column="1" Text="{x:Bind online}" Style="{StaticResource BaseTextBlockStyle}" HorizontalAlignment="Right" Foreground="{x:Bind online, Converter={StaticResource OnlineTextColourConverter}}" />
                 </Grid>
                 <TextBlock Grid.Row="1" Text="{x:Bind playerCountString}" Style="{StaticResource BaseTextBlockStyle}" />
                 <ProgressBar Grid.Row="2" Minimum="0" Maximum="1" Value="{x:Bind playerCountRatio}" />
             </Grid>
         </DataTemplate>
+
+        <Style x:Key="ListViewItemStyle" TargetType="ListViewItem">
+            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+            <Setter Property="Padding" Value="0, 10" />
+        </Style>
+
+        <converter:OnlineTextColourConverter x:Key="OnlineTextColourConverter"/>
     </Page.Resources>
 
     <Pivot Title="TruckersMP App">
         <PivotItem Header="Servers">
-            <ListView x:Name="ServerList" ItemsSource="{x:Bind Servers}" ItemTemplate="{StaticResource ServerInfoItem}">
-                
+            <ListView x:Name="ServerList" ItemsSource="{x:Bind Servers}" ItemTemplate="{StaticResource ServerInfoItem}" ScrollViewer.VerticalScrollBarVisibility="Hidden" ItemContainerStyle="{StaticResource ListViewItemStyle}">
             </ListView>
         </PivotItem>
         <PivotItem Header="Meetups">
