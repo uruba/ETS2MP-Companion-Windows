@@ -23,7 +23,7 @@
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0" Text="{x:Bind serverName}" Style="{StaticResource BaseTextBlockStyle}" />
-                    <TextBlock Grid.Column="1" Text="{x:Bind online}" Style="{StaticResource BaseTextBlockStyle}" HorizontalAlignment="Right" Foreground="{x:Bind online, Converter={StaticResource OnlineTextColourConverter}}" />
+                    <TextBlock Grid.Column="1" Text="{x:Bind onlineText, Converter={StaticResource UpperCaseTextConverter}}" Style="{StaticResource BaseTextBlockStyle}" HorizontalAlignment="Right" Foreground="{x:Bind online, Converter={StaticResource OnlineTextColourConverter}}" />
                 </Grid>
                 <TextBlock Grid.Row="1" Text="{x:Bind playerCountString}" Style="{StaticResource BaseTextBlockStyle}" />
                 <ProgressBar Grid.Row="2" Minimum="0" Maximum="1" Value="{x:Bind playerCountRatio}" />
@@ -35,7 +35,8 @@
             <Setter Property="Padding" Value="0, 10" />
         </Style>
 
-        <converter:OnlineTextColourConverter x:Key="OnlineTextColourConverter"/>
+        <converter:OnlineTextColourConverter x:Key="OnlineTextColourConverter" />
+        <converter:UpperCaseTextConverter x:Key="UpperCaseTextConverter" />
     </Page.Resources>
 
     <Pivot Title="TruckersMP App">

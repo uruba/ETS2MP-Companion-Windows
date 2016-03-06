@@ -13,6 +13,13 @@ namespace TruckersMPApp.Classes.Model
             get;
             private set;
         }
+        public String onlineText
+        {
+            get
+            {
+                return this.online ? "Online" : "Offline";
+            }
+        }
         public String gameName
         {
             get;

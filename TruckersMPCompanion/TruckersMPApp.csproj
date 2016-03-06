@@ -101,6 +101,7 @@
     </Compile>
     <Compile Include="Classes\Constants\URL.cs" />
     <Compile Include="Classes\Converters\OnlineTextColourConverter.cs" />
+    <Compile Include="Classes\Converters\UpperCaseTextConverter.cs" />
     <Compile Include="Classes\Model\ServerInfo.cs" />
     <Compile Include="Classes\UI\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
