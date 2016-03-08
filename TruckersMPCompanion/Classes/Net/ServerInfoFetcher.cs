@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using TruckersMPApp.Classes.Constants;
 using TruckersMPApp.Classes.Model;
@@ -13,26 +14,32 @@ namespace TruckersMPApp
     {
         public static async Task<ObservableCollection<ServerInfo>> fetchServers()
         {
-            HttpResponseMessage response = await new HttpClient().GetAsync(new Uri(URL.SERVER_LIST));
-            string rawResponse = await response.Content.ReadAsStringAsync().AsTask();
-            JsonArray responseArray = JsonObject.Parse(rawResponse)["response"].GetArray();
-
             ObservableCollection<ServerInfo> serverCollection = new ObservableCollection<ServerInfo>();
 
-            foreach (JsonValue entryValue in responseArray)
+            try
             {
-                JsonObject entryObject = entryValue.GetObject();
+                string response = await new HttpClient().GetStringAsync(new Uri(URL.SERVER_LIST));
+                JsonArray responseArray = JsonObject.Parse(response)["response"].GetArray();
 
-                ServerInfo serverInfoEntry = new ServerInfo(
-                    entryObject["online"].GetBoolean(), 
-                    entryObject["game"].GetString(), 
-                    entryObject["name"].GetString(), 
-                    entryObject["players"].GetNumber(), 
-                    entryObject["maxplayers"].GetNumber()
-                    );
+                foreach (JsonValue entryValue in responseArray)
+                {
+                    JsonObject entryObject = entryValue.GetObject();
 
-                serverCollection.Add(serverInfoEntry);
+                    ServerInfo serverInfoEntry = new ServerInfo(
+                        entryObject["online"].GetBoolean(),
+                        entryObject["game"].GetString(),
+                        entryObject["name"].GetString(),
+                        entryObject["players"].GetNumber(),
+                        entryObject["maxplayers"].GetNumber()
+                        );
+
+                    serverCollection.Add(serverInfoEntry);
+                }
+            } catch (Exception)
+            {
+                return new ObservableCollection<ServerInfo>();
             }
+
 
             return new ObservableCollection<ServerInfo>(serverCollection.OrderByDescending(a => a.playerCountCurrent));
         }
