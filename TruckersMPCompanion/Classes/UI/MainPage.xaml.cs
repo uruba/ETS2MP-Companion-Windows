@@ -31,6 +31,15 @@ namespace TruckersMPApp
                 return this._serverList;
             }
         }
+        public Windows.UI.Xaml.Visibility EmptyListPlaceholderVisibility
+        {
+            get
+            {
+                return (this._serverList == null || this._serverList.Count == 0) && this.loadingProgressBar.Visibility == Windows.UI.Xaml.Visibility.Collapsed ? 
+                    Windows.UI.Xaml.Visibility.Visible :
+                    Windows.UI.Xaml.Visibility.Collapsed;
+            }
+        }
 
         public MainPage()
         {

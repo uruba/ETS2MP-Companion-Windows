@@ -50,6 +50,7 @@
 
         <Grid Grid.Row="0">
             <ProgressBar x:Name="loadingProgressBar" IsIndeterminate="True" Visibility="Collapsed" VerticalAlignment="Top" />
+            <TextBlock Text="No data available.&#x0a;Please check your connection." Visibility="{x:Bind EmptyListPlaceholderVisibility}" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" Opacity="0.8" />
             <ListView x:Name="ServerList" ItemsSource="{x:Bind Servers}" ItemTemplate="{StaticResource ServerInfoItem}" ScrollViewer.VerticalScrollBarVisibility="Hidden" ItemContainerStyle="{StaticResource ListViewItemStyle}" SelectionMode="None" Padding="12,0,12,0" />
         </Grid>
     </Grid>
