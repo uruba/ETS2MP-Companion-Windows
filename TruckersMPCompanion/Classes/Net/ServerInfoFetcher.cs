@@ -37,7 +37,7 @@ namespace TruckersMPApp
                 }
             } catch (Exception)
             {
-                return new ObservableCollection<ServerInfo>();
+                return null;
             }
 
 

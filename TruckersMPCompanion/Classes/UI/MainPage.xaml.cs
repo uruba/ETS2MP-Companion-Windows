@@ -40,7 +40,9 @@ namespace TruckersMPApp
 
         private async void fetchServers()
         {
+            this.loadingProgressBar.Visibility = Visibility.Visible;
             this._serverList = await ServerInfoFetcher.fetchServers();
+            this.loadingProgressBar.Visibility = Visibility.Collapsed;
             Bindings.Update();
         }
 

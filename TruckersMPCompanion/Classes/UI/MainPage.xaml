@@ -43,15 +43,18 @@
         <converter:ParenthesesTextConverter x:Key="ParenthesesTextConverter" />
     </Page.Resources>
 
-    <Pivot Title="TruckersMP App">
-        <PivotItem Header="Servers">
-            <ListView x:Name="ServerList" ItemsSource="{x:Bind Servers}" ItemTemplate="{StaticResource ServerInfoItem}" ScrollViewer.VerticalScrollBarVisibility="Hidden" ItemContainerStyle="{StaticResource ListViewItemStyle}" SelectionMode="None">
-            </ListView>
-        </PivotItem>
-        <PivotItem Header="Meetups">
-            <Grid/>
-        </PivotItem>
-    </Pivot>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <ProgressBar x:Name="loadingProgressBar" IsIndeterminate="True" Visibility="Collapsed" VerticalAlignment="Top" />
+            <ListView x:Name="ServerList" ItemsSource="{x:Bind Servers}" ItemTemplate="{StaticResource ServerInfoItem}" ScrollViewer.VerticalScrollBarVisibility="Hidden" ItemContainerStyle="{StaticResource ListViewItemStyle}" SelectionMode="None" Padding="12,0,12,0" />
+        </Grid>
+    </Grid>
+
+
 
     <Page.BottomAppBar>
         <CommandBar>
