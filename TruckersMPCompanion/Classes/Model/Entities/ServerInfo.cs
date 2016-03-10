@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TruckersMPApp.Classes.Model
+namespace TruckersMPApp.Classes.Model.Entities
 {
     public class ServerInfo
     {

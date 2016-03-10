@@ -4,7 +4,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using TruckersMPApp.Classes.Constants;
-using TruckersMPApp.Classes.Model;
+using TruckersMPApp.Classes.Model.Entities;
 using Windows.Data.Json;
 using Windows.Web.Http;
 

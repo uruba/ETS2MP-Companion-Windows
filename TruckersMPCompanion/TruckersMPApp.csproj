@@ -103,7 +103,7 @@
     <Compile Include="Classes\Converters\OnlineTextColourConverter.cs" />
     <Compile Include="Classes\Converters\ParenthesesTextConverter.cs" />
     <Compile Include="Classes\Converters\UpperCaseTextConverter.cs" />
-    <Compile Include="Classes\Model\ServerInfo.cs" />
+    <Compile Include="Classes\Model\Entities\ServerInfo.cs" />
     <Compile Include="Classes\UI\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>

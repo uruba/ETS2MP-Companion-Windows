@@ -5,7 +5,7 @@
     xmlns:local="using:TruckersMPApp"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:model="using:TruckersMPApp.Classes.Model"
+    xmlns:model="using:TruckersMPApp.Classes.Model.Entities"
     xmlns:converter="using:TruckersMPApp.Classes.Converters"
     mc:Ignorable="d">
 
@@ -56,7 +56,7 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="0" Text="TruckApp – TruckersMP Server Status" FontSize="16" FontWeight="Bold" Margin="0,8,0,8" />
+        <TextBlock Grid.Row="0" Text="TruckApp – TruckersMP Server Status" FontSize="16" FontWeight="Bold" Margin="0,8,0,16" />
         <Grid Grid.Row="1">
             <ProgressBar x:Name="loadingProgressBar" IsIndeterminate="True" Visibility="Collapsed" VerticalAlignment="Top" />
             <TextBlock Text="No data available.&#x0a;Please check your connection." Visibility="{x:Bind EmptyListPlaceholderVisibility}" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" Opacity="0.8" />
