@@ -15,7 +15,6 @@ namespace TruckersMPApp.Classes.Model
 
         public event fetchEventHandler beforeFetch;
         public event fetchEventHandler afterFetch;
-        public event PropertyChangedEventHandler PropertyChanged;
 
         public ObservableCollection<ServerInfo> ServerCollection
         {
