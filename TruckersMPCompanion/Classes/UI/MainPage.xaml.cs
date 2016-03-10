@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using TruckersMPApp.Classes.Model;
 using TruckersMPApp.Classes.Model.Entities;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -24,18 +25,18 @@ namespace TruckersMPApp
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        private ObservableCollection<ServerInfo> _serverList;
+        private ServerList _serverList;
         public ObservableCollection<ServerInfo> Servers {
             get
             {
-                return this._serverList;
+                return this._serverList.ServerCollection;
             }
         }
         public Windows.UI.Xaml.Visibility EmptyListPlaceholderVisibility
         {
             get
             {
-                return (this._serverList == null || this._serverList.Count == 0) && this.loadingProgressBar.Visibility == Windows.UI.Xaml.Visibility.Collapsed ? 
+                return (this.Servers == null || this.Servers.Count == 0) && this.loadingProgressBar.Visibility == Windows.UI.Xaml.Visibility.Collapsed ? 
                     Windows.UI.Xaml.Visibility.Visible :
                     Windows.UI.Xaml.Visibility.Collapsed;
             }
@@ -44,20 +45,32 @@ namespace TruckersMPApp
         public MainPage()
         {
             this.InitializeComponent();
-            this.fetchServers();
-        }
+            this._serverList = new ServerList();
+            this._serverList.beforeFetch += new ServerList.fetchEventHandler(beforeRefresh);
+            this._serverList.afterFetch += new ServerList.fetchEventHandler(afterRefresh);
 
-        private async void fetchServers()
-        {
-            this.loadingProgressBar.Visibility = Visibility.Visible;
-            this._serverList = await ServerInfoFetcher.fetchServers();
-            this.loadingProgressBar.Visibility = Visibility.Collapsed;
-            Bindings.Update();
+            this.refreshServers();
         }
 
         private void Refresh_Click(object sender, RoutedEventArgs e)
         {
-            this.fetchServers();
+            this.refreshServers();
+        }
+
+        private async void refreshServers()
+        {
+            await this._serverList.fetchServers();
+        }
+
+        private void beforeRefresh()
+        {
+            this.loadingProgressBar.Visibility = Visibility.Visible;
+        }
+
+        private void afterRefresh()
+        {
+            this.loadingProgressBar.Visibility = Visibility.Collapsed;
+            Bindings.Update();
         }
     }
 }
