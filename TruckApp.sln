@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TruckersMPApp", "TruckersMPCompanion\TruckersMPApp.csproj", "{F4752187-B699-49FB-8036-50F3CFECA35F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TruckApp", "TruckersMPCompanion\TruckApp.csproj", "{F4752187-B699-49FB-8036-50F3CFECA35F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
