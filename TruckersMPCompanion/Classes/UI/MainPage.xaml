@@ -35,7 +35,7 @@
 
         <Style x:Key="ListViewItemStyle" TargetType="ListViewItem">
             <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-            <Setter Property="Padding" Value="0,8" />
+            <Setter Property="Padding" Value="0,0,0,20" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="ListViewItem">
@@ -48,17 +48,22 @@
         <converter:OnlineTextColourConverter x:Key="OnlineTextColourConverter" />
         <converter:UpperCaseTextConverter x:Key="UpperCaseTextConverter" />
         <converter:ParenthesesTextConverter x:Key="ParenthesesTextConverter" />
+        <converter:LastUpdatedTextConverter x:Key="LastUpdatedTextConverter" />
     </Page.Resources>
 
     <Grid Padding="12,0">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="0" Text="TruckApp – TruckersMP Server Status" FontSize="16" FontWeight="Bold" Margin="0,8,0,16" />
+        <TextBlock Grid.Row="0" Text="TruckApp – TruckersMP Server Status" FontSize="16" FontWeight="Bold" Margin="0,8,0,8" />
         <Grid Grid.Row="1">
-            <ProgressBar x:Name="loadingProgressBar" IsIndeterminate="True" Visibility="Collapsed" VerticalAlignment="Top" />
+            <TextBlock x:Name="textLastUpdated" Visibility="{x:Bind TextLastUpdatedVisibility}" Text="{x:Bind LastUpdated, Converter={StaticResource LastUpdatedTextConverter}}" FontSize="12" HorizontalAlignment="Center" Opacity="0.8" Margin="0,0,0,8" />
+            <ProgressBar x:Name="loadingProgressBar" IsIndeterminate="True" Visibility="Collapsed" VerticalAlignment="Bottom" />
+        </Grid>
+        <Grid Grid.Row="2">
             <TextBlock Text="No data available.&#x0a;Please check your connection." Visibility="{x:Bind EmptyListPlaceholderVisibility}" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" Opacity="0.8" />
             <ListView x:Name="ServerList" ItemsSource="{x:Bind Servers}" ItemTemplate="{StaticResource ServerInfoItem}" ScrollViewer.VerticalScrollBarVisibility="Hidden" ItemContainerStyle="{StaticResource ListViewItemStyle}"  SelectionMode="None" />
         </Grid>

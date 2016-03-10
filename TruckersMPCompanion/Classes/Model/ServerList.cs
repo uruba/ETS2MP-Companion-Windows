@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,8 +15,15 @@ namespace TruckersMPApp.Classes.Model
 
         public event fetchEventHandler beforeFetch;
         public event fetchEventHandler afterFetch;
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public ObservableCollection<ServerInfo> ServerCollection
+        {
+            get;
+            private set;
+        }
+
+        public DateTime lastUpdated
         {
             get;
             private set;
@@ -25,6 +33,7 @@ namespace TruckersMPApp.Classes.Model
         {
             beforeFetch();
             this.ServerCollection = await ServerInfoFetcher.fetchServers();
+            this.lastUpdated = DateTime.Now;
             afterFetch();
             return this.ServerCollection;
         }

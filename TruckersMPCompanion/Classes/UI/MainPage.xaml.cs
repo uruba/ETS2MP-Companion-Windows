@@ -32,15 +32,27 @@ namespace TruckersMPApp
                 return this._serverList.ServerCollection;
             }
         }
-        public Windows.UI.Xaml.Visibility EmptyListPlaceholderVisibility
+        public DateTime LastUpdated
         {
             get
             {
-                return (this.Servers == null || this.Servers.Count == 0) && this.loadingProgressBar.Visibility == Windows.UI.Xaml.Visibility.Collapsed ? 
-                    Windows.UI.Xaml.Visibility.Visible :
-                    Windows.UI.Xaml.Visibility.Collapsed;
+                return this._serverList.lastUpdated;
             }
         }
+        public Visibility EmptyListPlaceholderVisibility
+        {
+            get
+            {
+                return (this.Servers == null || this.Servers.Count == 0) && this.loadingProgressBar.Visibility == Visibility.Collapsed ?
+                    Visibility.Visible :
+                    Visibility.Collapsed;
+            }
+        }
+        public Visibility TextLastUpdatedVisibility
+        {
+            get;
+            private set;
+        } = Visibility.Collapsed;
 
         public MainPage()
         {
@@ -70,6 +82,7 @@ namespace TruckersMPApp
         private void afterRefresh()
         {
             this.loadingProgressBar.Visibility = Visibility.Collapsed;
+            this.TextLastUpdatedVisibility = Visibility.Visible;
             Bindings.Update();
         }
     }
