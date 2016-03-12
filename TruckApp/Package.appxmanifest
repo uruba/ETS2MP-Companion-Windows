@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
-  <Identity Name="51306uruba.TruckApp" Publisher="CN=39B55F34-C091-409A-8068-A76BF31DF66D" Version="0.10.0.0" />
+  <Identity Name="51306uruba.TruckApp" Publisher="CN=39B55F34-C091-409A-8068-A76BF31DF66D" Version="0.10.1.0" />
   <mp:PhoneIdentity PhoneProductId="d0e85333-8f41-4f4b-ab28-9297f600bacd" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
-    <DisplayName>TruckApp</DisplayName>
+    <DisplayName>TruckApp – TruckersMP Info</DisplayName>
     <PublisherDisplayName>V. Uruba</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
@@ -15,7 +15,7 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="TruckersMPCompanion.App">
-      <uap:VisualElements DisplayName="TruckApp – TruckersMP Info" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="TruckApp" BackgroundColor="transparent">
+      <uap:VisualElements DisplayName="TruckApp – TruckersMP Info" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="An unofficial companion app for TruckersMP players." BackgroundColor="transparent">
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" ShortName="TruckApp – TruckersMP Info">
           <uap:ShowNameOnTiles>
             <uap:ShowOn Tile="wide310x150Logo" />
