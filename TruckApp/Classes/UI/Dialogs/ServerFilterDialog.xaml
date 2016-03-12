@@ -9,13 +9,14 @@
     Title="Filter the servers"
     PrimaryButtonText="OK"
     SecondaryButtonText="Cancel"
-    PrimaryButtonClick="ContentDialog_PrimaryButtonClick">
+    PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
+    SecondaryButtonClick="ContentDialog_SecondaryButtonClick">
 
     <Grid>
         <StackPanel>
-            <RadioButton Tag="" Content="All games" Checked="RadioButton_Checked" />
-            <RadioButton Tag="ETS2" Content="Only ETS2 servers" Checked="RadioButton_Checked" />
-            <RadioButton Tag="ATS" Content="Only ATS servers" Checked="RadioButton_Checked" />
+            <RadioButton x:Name="ALL" Tag="" Content="All games" Checked="RadioButton_Checked" />
+            <RadioButton x:Name="ETS2" Tag="ETS2" Content="Only ETS2 servers" Checked="RadioButton_Checked" />
+            <RadioButton x:Name="ATS" Tag="ATS" Content="Only ATS servers" Checked="RadioButton_Checked" />
         </StackPanel>
     </Grid>
 </ContentDialog>

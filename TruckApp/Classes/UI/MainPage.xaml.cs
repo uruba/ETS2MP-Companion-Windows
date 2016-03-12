@@ -42,8 +42,7 @@ namespace TruckersMPApp
         {
             get
             {
-                return 
-                    (Windows.Storage.ApplicationData.Current.LocalSettings.Values["filterServerByGame"] ?? String.Empty) 
+                return (Windows.Storage.ApplicationData.Current.LocalSettings.Values["filterServerByGame"] ?? String.Empty) 
                     as string;
             }
         }
@@ -108,7 +107,10 @@ namespace TruckersMPApp
             ServerFilterDialog filterDialog = new ServerFilterDialog();
             await filterDialog.ShowAsync();
      
-            Bindings.Update();
+            if (!filterDialog.isCancelled)
+            {
+                Bindings.Update();
+            }    
         }
     }
 }
