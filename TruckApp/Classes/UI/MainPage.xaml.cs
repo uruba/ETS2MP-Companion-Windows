@@ -55,7 +55,7 @@ namespace TruckersMPApp
         {
             get
             {
-                if (String.IsNullOrEmpty(filterByGameName) || EmptyListPlaceholderVisibility == Visibility.Visible)
+                if (String.IsNullOrEmpty(filterByGameName) || EmptyListPlaceholderVisibility == Visibility.Visible || TextLastUpdatedVisibility == Visibility.Collapsed)
                 {
                     return Visibility.Collapsed;
                 } else
@@ -65,6 +65,13 @@ namespace TruckersMPApp
             }
         }
         #endregion
+        public DateTime LastUpdated
+        {
+            get
+            {
+                return this._serverList.lastUpdated;
+            }
+        }
         private bool _isLoading;
         public bool isLoading
         {
@@ -84,13 +91,6 @@ namespace TruckersMPApp
                 _isLoading = value;
             }
         }
-        public DateTime LastUpdated
-        {
-            get
-            {
-                return this._serverList.lastUpdated;
-            }
-        }
         public Visibility EmptyListPlaceholderVisibility
         {
             get
@@ -104,7 +104,7 @@ namespace TruckersMPApp
         {
             get
             {
-                return (this.EmptyListPlaceholderVisibility == Visibility.Visible) ?
+                return (this.EmptyListPlaceholderVisibility == Visibility.Visible || this.Servers == null || this.Servers.Count == 0) ?
                     Visibility.Collapsed :
                     Visibility.Visible;
             }
