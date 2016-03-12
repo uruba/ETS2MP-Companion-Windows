@@ -18,7 +18,7 @@
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <PackageCertificateKeyFile>TruckApp_StoreKey.pfx</PackageCertificateKeyFile>
-    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+    <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
     <AppxBundlePlatforms>arm</AppxBundlePlatforms>
     <PackageCertificateThumbprint>6AB7DFB698630A8C822B67AA2AAB9F1FBD641F6D</PackageCertificateThumbprint>
     <AppxBundle>Always</AppxBundle>
@@ -113,6 +113,9 @@
     <Compile Include="Classes\UI\Controls\ServerListView.xaml.cs">
       <DependentUpon>ServerListView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Classes\UI\Dialogs\ServerFilterDialog.xaml.cs">
+      <DependentUpon>ServerFilterDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Classes\UI\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -149,6 +152,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Page Include="Classes\UI\Controls\ServerListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Classes\UI\Dialogs\ServerFilterDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

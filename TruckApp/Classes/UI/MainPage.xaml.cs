@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using TruckersMPApp.Classes.Model;
 using TruckersMPApp.Classes.Model.Entities;
+using TruckersMPApp.Classes.UI.Dialogs;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -29,9 +30,23 @@ namespace TruckersMPApp
         public ObservableCollection<ServerInfo> Servers {
             get
             {
-                return this._serverList.ServerCollection;
+                return
+                    this._serverList.ServerCollection == null ?
+                    null :
+                    new ObservableCollection<ServerInfo>(this._serverList.ServerCollection.Where(x => x.gameName.Contains(filterByGameName))
+                    );
             }
         }
+        private string filterByGameName
+        {
+            get
+            {
+                return 
+                    (Windows.Storage.ApplicationData.Current.LocalSettings.Values["filterServerByGame"] ?? String.Empty) 
+                    as string;
+            }
+        }
+
         public DateTime LastUpdated
         {
             get
@@ -83,6 +98,15 @@ namespace TruckersMPApp
         {
             this.loadingProgressBar.Visibility = Visibility.Collapsed;
             this.TextLastUpdatedVisibility = Visibility.Visible;
+
+            Bindings.Update();
+        }
+
+        private async void Filter_Click(object sender, RoutedEventArgs e)
+        {
+            ServerFilterDialog filterDialog = new ServerFilterDialog();
+            await filterDialog.ShowAsync();
+     
             Bindings.Update();
         }
     }
