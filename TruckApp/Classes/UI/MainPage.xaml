@@ -5,49 +5,11 @@
     xmlns:local="using:TruckersMPApp"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:model="using:TruckersMPApp.Classes.Model.Entities"
     xmlns:converter="using:TruckersMPApp.Classes.Converters"
+    xmlns:views="using:TruckersMPApp.Classes.UI.Controls"
     mc:Ignorable="d">
 
     <Page.Resources>
-        <DataTemplate x:Key="ServerInfoItem" x:DataType="model:ServerInfo">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
-                </Grid.RowDefinitions>
-                <Grid Grid.Row="0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <StackPanel Orientation="Horizontal" Margin="0,0,0,2">
-                        <TextBlock Grid.Column="0" Text="{x:Bind serverName}" Style="{StaticResource BaseTextBlockStyle}" />
-                        <TextBlock Grid.Column="0" Text="{x:Bind gameName, Converter={StaticResource ParenthesesTextConverter}}" Style="{StaticResource BaseTextBlockStyle}" Margin="4,0,0,0" Opacity="0.6" />
-                    </StackPanel>
-                    <TextBlock Grid.Column="1" Text="{x:Bind onlineText, Converter={StaticResource UpperCaseTextConverter}}" Style="{StaticResource BaseTextBlockStyle}" HorizontalAlignment="Right" Foreground="{x:Bind online, Converter={StaticResource OnlineTextColourConverter}}" FontSize="13" />
-                </Grid>
-                <TextBlock Grid.Row="1" Text="{x:Bind playerCountString}" Style="{StaticResource BaseTextBlockStyle}" FontSize="13" Margin="0,0,0,6" />
-                <ProgressBar Grid.Row="2" Minimum="0" Maximum="1" Value="{x:Bind playerCountRatio}" />
-            </Grid>
-        </DataTemplate>
-
-        <Style x:Key="ListViewItemStyle" TargetType="ListViewItem">
-            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-            <Setter Property="Padding" Value="0,0,0,20" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="ListViewItem">
-                        <ListViewItemPresenter CheckBrush="{ThemeResource SystemControlForegroundBaseMediumHighBrush}" ContentMargin="{TemplateBinding Padding}" CheckMode="Inline" ContentTransitions="{TemplateBinding ContentTransitions}" CheckBoxBrush="{ThemeResource SystemControlForegroundBaseMediumHighBrush}" DragForeground="{ThemeResource ListViewItemDragForegroundThemeBrush}" DragOpacity="{ThemeResource ListViewItemDragThemeOpacity}" DragBackground="{ThemeResource ListViewItemDragBackgroundThemeBrush}" DisabledOpacity="{ThemeResource ListViewItemDisabledThemeOpacity}" FocusBorderBrush="{ThemeResource SystemControlForegroundAltHighBrush}" FocusSecondaryBorderBrush="{ThemeResource SystemControlForegroundBaseHighBrush}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" PointerOverForeground="{ThemeResource SystemControlHighlightAltBaseHighBrush}" PressedBackground="Transparent" PlaceholderBackground="{ThemeResource ListViewItemPlaceholderBackgroundThemeBrush}" PointerOverBackground="{ThemeResource SystemControlHighlightListLowBrush}" ReorderHintOffset="{ThemeResource ListViewItemReorderHintThemeOffset}" SelectedPressedBackground="{ThemeResource SystemControlHighlightListAccentHighBrush}" SelectionCheckMarkVisualEnabled="True" SelectedForeground="{ThemeResource SystemControlHighlightAltBaseHighBrush}" SelectedPointerOverBackground="{ThemeResource SystemControlHighlightListAccentMediumBrush}" SelectedBackground="{ThemeResource SystemControlHighlightListAccentLowBrush}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-        <converter:OnlineTextColourConverter x:Key="OnlineTextColourConverter" />
-        <converter:UpperCaseTextConverter x:Key="UpperCaseTextConverter" />
-        <converter:ParenthesesTextConverter x:Key="ParenthesesTextConverter" />
         <converter:LastUpdatedTextConverter x:Key="LastUpdatedTextConverter" />
     </Page.Resources>
 
@@ -65,7 +27,7 @@
         </Grid>
         <Grid Grid.Row="2">
             <TextBlock Text="No data available.&#x0a;Please check your connection." Visibility="{x:Bind EmptyListPlaceholderVisibility}" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" Opacity="0.8" />
-            <ListView x:Name="ServerList" ItemsSource="{x:Bind Servers}" ItemTemplate="{StaticResource ServerInfoItem}" ScrollViewer.VerticalScrollBarVisibility="Hidden" ItemContainerStyle="{StaticResource ListViewItemStyle}"  SelectionMode="None" />
+            <views:ServerListView DataContext="{x:Bind Servers}" />
         </Grid>
     </Grid>
 

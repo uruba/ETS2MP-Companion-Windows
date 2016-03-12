@@ -71,7 +71,7 @@ namespace TruckersMPApp
 
         private async void refreshServers()
         {
-            await this._serverList.fetchServers();
+            await this._serverList.getServers();
         }
 
         private void beforeRefresh()

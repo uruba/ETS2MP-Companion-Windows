@@ -28,7 +28,7 @@ namespace TruckersMPApp.Classes.Model
             private set;
         }
 
-        public async Task<ObservableCollection<ServerInfo>> fetchServers()
+        public async Task<ObservableCollection<ServerInfo>> getServers()
         {
             beforeFetch();
             this.ServerCollection = await ServerInfoFetcher.fetchServers();
