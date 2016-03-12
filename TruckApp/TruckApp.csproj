@@ -104,6 +104,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Classes\Constants\URL.cs" />
+    <Compile Include="Classes\Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="Classes\Converters\FilteringTextConverter.cs" />
     <Compile Include="Classes\Converters\LastUpdatedTextConverter.cs" />
     <Compile Include="Classes\Converters\OnlineTextColourConverter.cs" />
