@@ -30,11 +30,12 @@ namespace TruckersMPApp
         public ObservableCollection<ServerInfo> Servers {
             get
             {
-                return
-                    this._serverList.ServerCollection == null ?
-                    null :
-                    new ObservableCollection<ServerInfo>(this._serverList.ServerCollection.Where(x => x.gameName.Contains(filterByGameName))
-                    );
+                if (this._serverList.ServerCollection == null || String.IsNullOrEmpty(filterByGameName))
+                {
+                    return this._serverList.ServerCollection;
+                }
+
+                return new ObservableCollection<ServerInfo>(this._serverList.ServerCollection.Where(x => x.gameName.Contains(filterByGameName)));
             }
         }
         private string filterByGameName
