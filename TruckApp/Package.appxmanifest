@@ -4,7 +4,7 @@
   <mp:PhoneIdentity PhoneProductId="d0e85333-8f41-4f4b-ab28-9297f600bacd" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>TruckApp</DisplayName>
-    <PublisherDisplayName>uruba</PublisherDisplayName>
+    <PublisherDisplayName>V. Uruba</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
   <Dependencies>
