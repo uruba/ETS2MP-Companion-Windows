@@ -26,6 +26,7 @@ namespace TruckersMPApp
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        #region Server list
         private ServerList _serverList;
         public ObservableCollection<ServerInfo> Servers {
             get
@@ -38,6 +39,9 @@ namespace TruckersMPApp
                 return new ObservableCollection<ServerInfo>(this._serverList.ServerCollection.Where(x => x.gameName.Contains(filterByGameName)));
             }
         }
+        #endregion
+
+        #region Text filter by a game name
         private string filterByGameName
         {
             get
@@ -46,6 +50,20 @@ namespace TruckersMPApp
                     as string;
             }
         }
+        public Visibility TextFilterByGameVisibility
+        {
+            get
+            {
+                if (String.IsNullOrEmpty(filterByGameName) || EmptyListPlaceholderVisibility == Visibility.Visible)
+                {
+                    return Visibility.Collapsed;
+                } else
+                {
+                    return Visibility.Visible;
+                }
+            }
+        }
+        #endregion
 
         public DateTime LastUpdated
         {
