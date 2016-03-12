@@ -19,6 +19,7 @@ using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
+// TODO: Clean up this mess of a code
 namespace TruckersMPApp
 {
     /// <summary>
@@ -64,7 +65,25 @@ namespace TruckersMPApp
             }
         }
         #endregion
-
+        private bool _isLoading;
+        public bool isLoading
+        {
+            get
+            {
+                return _isLoading;
+            }
+            private set
+            {
+                if (value)
+                {
+                    this.loadingProgressBar.Visibility = Visibility.Visible;
+                } else
+                {
+                    this.loadingProgressBar.Visibility = Visibility.Collapsed;
+                }
+                _isLoading = value;
+            }
+        }
         public DateTime LastUpdated
         {
             get
@@ -83,9 +102,13 @@ namespace TruckersMPApp
         }
         public Visibility TextLastUpdatedVisibility
         {
-            get;
-            private set;
-        } = Visibility.Collapsed;
+            get
+            {
+                return (this.EmptyListPlaceholderVisibility == Visibility.Visible) ?
+                    Visibility.Collapsed :
+                    Visibility.Visible;
+            }
+        }
 
         public MainPage()
         {
@@ -109,13 +132,12 @@ namespace TruckersMPApp
 
         private void beforeRefresh()
         {
-            this.loadingProgressBar.Visibility = Visibility.Visible;
+            this.isLoading = true;
         }
 
         private void afterRefresh()
         {
-            this.loadingProgressBar.Visibility = Visibility.Collapsed;
-            this.TextLastUpdatedVisibility = Visibility.Visible;
+            this.isLoading = false;
 
             Bindings.Update();
         }
