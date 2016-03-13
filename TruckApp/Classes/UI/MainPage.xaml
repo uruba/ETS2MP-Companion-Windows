@@ -12,6 +12,7 @@
     <Page.Resources>
         <converter:LastUpdatedTextConverter x:Key="LastUpdatedTextConverter" />
         <converter:FilteringTextConverter x:Key="FilteringTextConverter" />
+        <converter:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
     </Page.Resources>
 
     <Grid>
@@ -25,14 +26,14 @@
             <TextBlock Grid.Row="0" Text="TruckApp – TruckersMP Info" FontSize="16" FontWeight="Bold" Margin="0,8,0,12" />
             <Grid Grid.Row="1">
                 <StackPanel Orientation="Vertical" Margin="0,0,0,8">
-                    <TextBlock x:Name="textLastUpdated" Visibility="{x:Bind TextLastUpdatedVisibility}" Text="{x:Bind LastUpdated, Converter={StaticResource LastUpdatedTextConverter}}" FontSize="13" HorizontalAlignment="Center" Opacity="0.8" />
-                    <TextBlock Visibility="{x:Bind TextFilterByGameVisibility}" Text="{x:Bind filterByGameName, Converter={StaticResource FilteringTextConverter}}" FontSize="13" HorizontalAlignment="Center" Opacity="0.8" />
+                    <TextBlock x:Name="textLastUpdated" Visibility="{x:Bind _serverList.TextLastUpdatedVisibility, Converter={StaticResource BoolToVisibilityConverter}}" Text="{x:Bind _serverList.lastUpdated, Converter={StaticResource LastUpdatedTextConverter}}" FontSize="13" HorizontalAlignment="Center" Opacity="0.8" />
+                    <TextBlock Visibility="{x:Bind _serverList.TextFilterByGameVisibility, Converter={StaticResource BoolToVisibilityConverter}}" Text="{x:Bind _serverList.filterByGameName, Converter={StaticResource FilteringTextConverter}}" FontSize="13" HorizontalAlignment="Center" Opacity="0.8" />
                 </StackPanel>
-                <ProgressBar x:Name="loadingProgressBar" IsIndeterminate="True" Visibility="Collapsed" VerticalAlignment="Bottom" />
+                <ProgressBar x:Name="loadingProgressBar" IsIndeterminate="True" Visibility="{x:Bind _serverList.isLoading, Converter={StaticResource BoolToVisibilityConverter}, Mode=OneWay}" VerticalAlignment="Bottom" />
             </Grid>
             <Grid Grid.Row="2">
-                <TextBlock Text="No data available.&#x0a;Please check your connection." Visibility="{x:Bind EmptyListPlaceholderVisibility}" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" Opacity="0.8" />
-                <views:ServerListView DataContext="{x:Bind Servers}" />
+                <TextBlock Text="No data available.&#x0a;Please check your connection." Visibility="{x:Bind _serverList.EmptyListPlaceholderVisibility, Converter={StaticResource BoolToVisibilityConverter}}" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" Opacity="0.8" />
+                <views:ServerListView DataContext="{x:Bind _serverList.Servers}" />
             </Grid>
         </Grid>
     </Grid>
