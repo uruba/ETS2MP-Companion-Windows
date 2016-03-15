@@ -30,11 +30,11 @@
                     </Grid.ColumnDefinitions>
                     <StackPanel Orientation="Horizontal" Margin="0,0,0,2">
                         <TextBlock Grid.Column="0" Text="{x:Bind serverName}" Style="{StaticResource BaseTextBlockStyle}" />
-                        <TextBlock Grid.Column="0" Text="{x:Bind gameName, Converter={StaticResource ParenthesesTextConverter}}" Style="{StaticResource BaseTextBlockStyle}" Margin="4,0,0,0" Opacity="0.6" />
+                        <TextBlock Grid.Column="0" Text="{x:Bind gameName, Converter={StaticResource ParenthesesTextConverter}}" Style="{ThemeResource BaseTextBlockStyle}" Margin="4,0,0,0" Opacity="0.6" />
                     </StackPanel>
-                    <TextBlock Grid.Column="1" Text="{x:Bind onlineText, Converter={StaticResource UpperCaseTextConverter}}" Style="{StaticResource BaseTextBlockStyle}" HorizontalAlignment="Right" Foreground="{x:Bind online, Converter={StaticResource OnlineTextColourConverter}}" FontSize="13" />
+                    <TextBlock Grid.Column="1" Text="{x:Bind onlineText, Converter={StaticResource UpperCaseTextConverter}}" Style="{ThemeResource BaseTextBlockStyle}" HorizontalAlignment="Right" Foreground="{x:Bind online, Converter={StaticResource OnlineTextColourConverter}}" FontSize="13" />
                 </Grid>
-                <TextBlock Grid.Row="1" Text="{x:Bind playerCountString}" Style="{StaticResource BaseTextBlockStyle}" FontSize="13" Margin="0,0,0,6" />
+                <TextBlock Grid.Row="1" Text="{x:Bind playerCountString}" Style="{ThemeResource BaseTextBlockStyle}" FontSize="13" Margin="0,0,0,6" />
                 <ProgressBar Grid.Row="2" Minimum="0" Maximum="1" Value="{x:Bind playerCountRatio}" />
             </Grid>
         </DataTemplate>
