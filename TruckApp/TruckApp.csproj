@@ -112,6 +112,7 @@
     <Compile Include="Classes\Converters\UpperCaseTextConverter.cs" />
     <Compile Include="Classes\Model\Entities\ServerInfo.cs" />
     <Compile Include="Classes\Model\ServerList.cs" />
+    <Compile Include="Classes\Net\Interfaces\GenericFetcher.cs" />
     <Compile Include="Classes\UI\Controls\ServerListView.xaml.cs">
       <DependentUpon>ServerListView.xaml</DependentUpon>
     </Compile>

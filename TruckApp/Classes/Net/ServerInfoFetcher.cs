@@ -1,16 +1,15 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using TruckersMPApp.Classes.Constants;
 using TruckersMPApp.Classes.Model.Entities;
+using TruckersMPApp.Classes.Net.Interfaces;
 using Windows.Data.Json;
-using Windows.Web.Http;
 
 namespace TruckersMPApp
 {
-    public sealed class ServerInfoFetcher
+    public sealed class ServerInfoFetcher : GenericFetcher
     {
         public static async Task<ObservableCollection<ServerInfo>> fetchServers()
         {
@@ -18,7 +17,7 @@ namespace TruckersMPApp
 
             try
             {
-                string response = await new HttpClient().GetStringAsync(new Uri(URL.SERVER_LIST));
+                string response = await ServerInfoFetcher.fetchRawData(new Uri(URL.SERVER_LIST));
                 JsonArray responseArray = JsonObject.Parse(response)["response"].GetArray();
 
                 foreach (JsonValue entryValue in responseArray)
