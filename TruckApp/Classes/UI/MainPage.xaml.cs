@@ -16,14 +16,6 @@ namespace TruckersMPApp
 
         private ServerList _serverList;
 
-        public DateTime LastUpdated
-        {
-            get
-            {
-                return this._serverList.lastUpdated;
-            }
-        }
-
         public MainPage()
         {
             this.InitializeComponent();
