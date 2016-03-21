@@ -7,7 +7,7 @@ namespace TruckersMPApp.Classes.Converters
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {
-            return (bool)value ? App.Current.Resources["SystemControlHighlightAccentBrush"] : App.Current.Resources["SystemControlForegroundBaseHighBrush"];
+            return App.Current.Resources[(bool)value ? "SystemControlHighlightAccentBrush" : "SystemControlForegroundBaseHighBrush"];
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)
