@@ -1,4 +1,4 @@
-# TruckApp – TruckersMP Info (for Windows 10 Mobile) 
+# TruckApp – A TruckersMP companion app (for Windows 10 Mobile) 
 This is the Windows 10 Mobile version of the [TruckApp Android application](https://github.com/uruba/TruckApp) (formerly known as *Unofficial ETS2MP Companion*). It's currently just a stub, but an effort will be put into bringing it up to par with its Android counterpart.
 
 <p align="center">
